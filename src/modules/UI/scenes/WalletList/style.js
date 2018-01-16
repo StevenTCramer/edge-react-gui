@@ -365,6 +365,13 @@ export const styles = {
   },
   emptyRowUnderlay: {
     color: THEME.COLORS.ROW_PRESSED
+  },
+  getSeedContainer: {
+    flexDirection: 'column'
+  },
+  getSeedButtonsWrap: {
+    flexDirection: 'row',
+    alignSelf: 'flex-end'
   }
 }
 

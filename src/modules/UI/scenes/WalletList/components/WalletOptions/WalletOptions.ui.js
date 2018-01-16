@@ -13,6 +13,7 @@ import RenameWalletButtons from '../RenameWalletButtonsConnector'
 import ResyncWalletButtons from '../ResyncWalletButtonsConnector'
 import SplitWalletButtons from '../SplitWalletButtonsConnector'
 import GetSeed from '../GetSeed/GetSeedConnector'
+import GetSeedButton from '../GetSeed/GetSeedButtonsConnector.js'
 
 import {
   CLOSE_MODAL_FUNCTION,
@@ -61,11 +62,8 @@ const optionSpecificParams = (value: string, props: any) => {
     case Constants.WALLET_OPTIONS.GET_SEED.value:
       return {
         headerText: s.strings.fragment_wallets_get_seed_wallet,
-        modalMiddle: <OptionSubtext
-          confirmationText={s.strings.fragment_wallets_get_seed_wallet_first_confirm_message_mobile}
-          label={s.strings.fragment_wallets_get_seed_wallet}
-        />,
-        modalBottom: <GetSeed walletId={props.walletId} />
+        modalMiddle: <GetSeed walletId={props.walletId} />,
+        modalBottom: <GetSeedButton />
       }
     default:
       return null
