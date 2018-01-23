@@ -42,6 +42,7 @@ Set `ANDROID_NDK_HOME` environment variable to the path of the NDK. ie
 1. Go to file node_modules/react-native/react.gradle 
 2. go to the method  "def currentBundleTask"
 3. After the doFirst method, add the following snippet : 
+
 `doLast {
     def moveFunc = { resSuffix ->
         File originalDir = file("${resourcesDir}/drawable-${resSuffix}")
