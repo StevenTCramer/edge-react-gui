@@ -24,9 +24,10 @@ Edge Wallet is:
 
     npm install -g react-native-cli
 
-### Install node_modules
+### Checkout to master branch and install node_modules
 
     cd edge-react-gui
+    git checkout master
     npm i
 
 ### Android NDK Setup
