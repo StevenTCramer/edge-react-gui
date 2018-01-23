@@ -24,7 +24,7 @@ Edge Wallet is:
 
     npm install -g react-native-cli
 
-### Checkout develop branch & install node_modules
+### Install node_modules
 
     cd edge-react-gui
     npm i
@@ -38,11 +38,25 @@ Set `ANDROID_NDK_HOME` environment variable to the path of the NDK. ie
 
     export ANDROID_NDK_HOME=/Users/bob/Library/Android/sdk/ndk-bundle
  
-### Add API key in env.json
-
-Get an API key from https://developer.airbitz.co by scanning the QR code with your Airbitz wallet (https://airbitz.co/app)
-Copy the env.example.json to env.json and change the `AIRBITZ_API_KEY` to the API key you received from developer.airbitz.co.
-
+### Additional step to make build pass 
+1. Go to file node_modules/react-native/react.gradle 
+2. go to the method  "def currentBundleTask"
+3. After the doFirst method, add the following snippet : 
+doLast {
+    def moveFunc = { resSuffix ->
+        File originalDir = file("${resourcesDir}/drawable-${resSuffix}")
+        if (originalDir.exists()) {
+            File destDir = file("${resourcesDir}/drawable-${resSuffix}-v4")
+            ant.move(file: originalDir, tofile: destDir)
+        }
+    }
+    moveFunc.curry("ldpi").call()
+    moveFunc.curry("mdpi").call()
+    moveFunc.curry("hdpi").call()
+    moveFunc.curry("xhdpi").call()
+    moveFunc.curry("xxhdpi").call()
+    moveFunc.curry("xxxhdpi").call()
+}
 ### Run the app in debug mode
 
   `react-native run-ios` or `react-native run-android`
