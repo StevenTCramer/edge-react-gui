@@ -126,10 +126,6 @@ BackgroundTask.define(async () => {
 })
 
 export default class App extends Component<{}> {
-  componentDidMount () {
-    BackgroundTask.schedule()
-  }
-
   render () {
     return (
       <Provider store={store}>
